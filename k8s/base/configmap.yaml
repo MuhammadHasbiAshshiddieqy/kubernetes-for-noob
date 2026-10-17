@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  APP_ENV: "lab"
+  GREETING: "Halo dari Tokoku API"
+  ENABLE_DEBUG: "true"     # endpoint /debug/* untuk latihan; matikan di production
+  STARTUP_DELAY: "0s"      # coba "20s" untuk melihat readiness probe menahan traffic
+  SHUTDOWN_DELAY: "5s"     # jeda setelah SIGTERM agar Service sempat berhenti mengirim traffic

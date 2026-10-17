@@ -1,0 +1,9 @@
+.git
+.github
+bin
+k8s
+loadtest
+*.md
+Makefile
+*.tar
+.DS_Store

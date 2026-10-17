@@ -1,0 +1,16 @@
+# Membuka API ke luar cluster lewat NodePort 30080 (dipetakan ke localhost:8090 oleh kind).
+# Berbeda dari "kubectl port-forward" yang hanya menembus SATU pod, NodePort membagi traffic ke semua pod.
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-nodeport
+  namespace: tokoku
+spec:
+  type: NodePort
+  selector:
+    app: api
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      nodePort: 30080

@@ -1,0 +1,15 @@
+# Cluster kind 3 node TANPA CNI bawaan, untuk Modul 7 (pasang Cilium sendiri).
+# Setelah dibuat, semua node berstatus NotReady sampai Cilium terpasang. Itu normal.
+# Pakai: kind create cluster --name lab --config k8s/kind/kind-3node-cilium.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  disableDefaultCNI: true
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30080
+        hostPort: 8090
+        protocol: TCP
+  - role: worker
+  - role: worker
